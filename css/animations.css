@@ -1,0 +1,36 @@
+@keyframes heroZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.12); }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(10px); }
+}
+
+@keyframes rotateGlobe {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes planeOrbit {
+  0% { transform: rotate(-35deg) translateX(76px) rotate(35deg); opacity: 0; }
+  20% { opacity: 1; }
+  50% { transform: rotate(25deg) translateX(92px) rotate(-25deg); opacity: 1; }
+  100% { transform: rotate(135deg) translateX(74px) rotate(-135deg); opacity: 0; }
+}
+
+@keyframes lineSweep {
+  from { transform: translateX(-40px); opacity: 0.2; }
+  50% { opacity: 1; }
+  to { transform: translateX(40px); opacity: 0.2; }
+}
+
+@keyframes dashMove {
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}

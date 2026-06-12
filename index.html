@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SN HOLIDAY PLANNER | Luxury Travel Experience</title>
+  <meta name="description" content="SN HOLIDAY PLANNER is a premium travel website offering immersive destination journeys across Rajasthan, Shimla, Kashmir, Manali, Odisha, and Ladakh." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="intro-overlay" id="introOverlay" aria-hidden="true">
+    <div class="intro-stage">
+      <div class="glow-ring"></div>
+      <div class="globe-wrap">
+        <div class="globe"></div>
+        <div class="route route-1"></div>
+        <div class="route route-2"></div>
+        <div class="plane plane-1">✈</div>
+      </div>
+      <p class="intro-model">Prepared With: Perplexity (Powered by GPT-5.4)</p>
+      <h1 class="intro-brand">SN HOLIDAY PLANNER</h1>
+      <p class="intro-tagline">Where your journey begins before you arrive.</p>
+    </div>
+  </div>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
+      <span class="preloader-line"></span>
+      <h2>SN HOLIDAY PLANNER</h2>
+      <p>Crafting a premium journey...</p>
+    </div>
+  </div>
+  <div class="top-support-bar">
+    <span>24/7 Travel Assistance Available</span>
+    <a href="tel:+918527374956">+91 8527374956</a>
+  </div>
+  <header class="site-header" id="siteHeader">
+    <nav class="navbar container" aria-label="Primary navigation">
+      <a href="#home" class="brand">
+        <svg viewBox="0 0 120 36" aria-label="SN Holiday Planner logo" role="img">
+          <path d="M8 27V9h8l9 11 9-11h8v18h-6V17l-11 13L14 17v10H8Z" fill="currentColor"></path>
+          <path d="M55 27V9h13c6 0 9 3 9 8s-3 8-9 8h-7v2h-6Zm6-7h6c3 0 4-1 4-3s-1-3-4-3h-6v6Z" fill="currentColor"></path>
+          <path d="M84 27V9h6v13h22v5H84Z" fill="currentColor"></path>
+        </svg>
+        <span>SN HOLIDAY PLANNER</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-panel" id="navPanel">
+        <ul class="nav-links" role="list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#destinations" class="nav-link">Destinations</a></li>
+          <li><a href="#gallery" class="nav-link">Gallery</a></li>
+          <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Switch theme">
+            <span class="sun">☀</span>
+            <span class="moon">☾</span>
+          </button>
+          <a class="btn btn-gold btn-sm" href="#contact">Plan Your Journey</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="nav-dots" aria-hidden="true">
+    <a href="#home" class="dot-link active"><span>Home</span></a>
+    <a href="#destinations" class="dot-link"><span>Destinations</span></a>
+    <a href="#gallery" class="dot-link"><span>Gallery</span></a>
+    <a href="#contact" class="dot-link"><span>Contact</span></a>
+  </div>
+  <aside class="destination-tracker" id="destinationTracker" aria-label="Destination progress">
+    <p>Journey</p>
+    <ul role="list">
+      <li><a href="#rajasthan" class="tracker-link active">Rajasthan</a></li>
+      <li><a href="#shimla" class="tracker-link">Shimla</a></li>
+      <li><a href="#kashmir" class="tracker-link">Kashmir</a></li>
+      <li><a href="#manali" class="tracker-link">Manali</a></li>
+      <li><a href="#odisha" class="tracker-link">Odisha</a></li>
+      <li><a href="#ladakh" class="tracker-link">Ladakh</a></li>
+    </ul>
+  </aside>
+  <main id="main">
+    <section class="hero section" id="home">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/images/abc.jpg">
+        <source src="assets/videos/cdf.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-parallax"></div>
+      <div class="container hero-content reveal">
+        <p class="eyebrow">Luxury Travel • India Journeys • Premium Planning</p>
+        <h1>Travel with elegance, discover with wonder.</h1>
+        <p class="hero-copy">SN HOLIDAY PLANNER creates premium travel experiences across Rajasthan, Shimla, Kashmir, Manali, Odisha, and Ladakh with trust, comfort, and cinematic presentation.</p>
+        <div class="hero-actions">
+          <a href="#destinations" class="btn btn-gold">Explore Destinations</a>
+          <a href="#contact" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span></span>
+        <small>Scroll to begin the journey</small>
+      </div>
+    </section>
+    <section class="about section" id="about">
+      <div class="container split-grid">
+        <div class="section-copy reveal">
+          <p class="eyebrow">About the Brand</p>
+          <h2>Trusted premium travel planning with a personal touch.</h2>
+          <p>SN HOLIDAY PLANNER is designed to present travel not as a booking form, but as an emotional journey. The brand blends premium presentation, thoughtful planning, and destination storytelling to create confidence before the trip even begins.</p>
+          <div class="owner-card glass-card">
+            <h3>Owner Information</h3>
+            <p><strong>Parmod Kumar Nanda</strong></p>
+            <p><a href="tel:+918527374956">+91 8527374956</a></p>
+            <p>2958/4, New Ranjeet Nagar, Patel Nagar, Delhi – 110008</p>
+          </div>
+        </div>
+        <div class="stats-panel reveal">
+          <div class="stat-card"><span class="stat-number" data-target="1000">0</span><span class="plus">+</span><p>Happy Travelers</p></div>
+          <div class="stat-card"><span class="stat-number" data-target="6">0</span><p>Destinations</p></div>
+          <div class="stat-card"><span class="stat-number" data-target="24">0</span><span class="plus">/7</span><p>Support</p></div>
+          <div class="stat-card"><span class="stat-number" data-target="100">0</span><span class="plus">%</span><p>Customer Assistance</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="map-section section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Interactive Journey Map</p>
+          <h2>Routes that begin in Delhi and unfold across India.</h2>
+        </div>
+        <div class="map-board glass-card reveal">
+          <div class="map-svg-wrap">
+            <svg viewBox="0 0 800 500" class="route-map" aria-label="Travel route map">
+              <defs>
+                <linearGradient id="goldPath" x1="0%" x2="100%" y1="0%" y2="0%">
+                  <stop offset="0%" stop-color="#7e6222"/>
+                  <stop offset="50%" stop-color="#e5c67d"/>
+                  <stop offset="100%" stop-color="#8e6a27"/>
+                </linearGradient>
+              </defs>
+              <path class="india-shape" d="M255 88c30-14 68-17 104-10 31 6 60 22 84 43 20 18 32 44 43 68 9 21 25 38 40 55 14 17 18 38 13 58-6 21-20 39-37 52-15 11-31 20-45 33-14 13-26 31-29 51-3 18-13 33-31 34-19 2-39-4-56-13-17-10-31-25-50-31-24-8-50-1-74-5-21-4-39-18-51-35-11-16-17-36-17-56 0-24 9-47 5-71-5-29-25-54-27-84-2-31 11-64 28-89 14-20 33-38 57-50Z"></path>
+              <circle class="city delhi" cx="390" cy="165" r="7"></circle>
+              <text x="402" y="160">Delhi</text>
+              <circle class="city" cx="295" cy="168" r="6"></circle>
+              <text x="250" y="160">Rajasthan</text>
+              <circle class="city" cx="412" cy="120" r="6"></circle>
+              <text x="426" y="118">Shimla</text>
+              <circle class="city" cx="455" cy="92" r="6"></circle>
+              <text x="470" y="92">Kashmir</text>
+              <circle class="city" cx="435" cy="145" r="6"></circle>
+              <text x="447" y="146">Manali</text>
+              <circle class="city" cx="560" cy="305" r="6"></circle>
+              <text x="574" y="308">Odisha</text>
+              <circle class="city" cx="470" cy="62" r="6"></circle>
+              <text x="485" y="64">Ladakh</text>
+              <path class="route-path" d="M390 165 Q340 165 295 168"></path>
+              <path class="route-path" d="M390 165 Q404 142 412 120"></path>
+              <path class="route-path" d="M390 165 Q430 130 455 92"></path>
+              <path class="route-path" d="M390 165 Q420 160 435 145"></path>
+              <path class="route-path" d="M390 165 Q500 210 560 305"></path>
+              <path class="route-path" d="M390 165 Q452 118 470 62"></path>
+            </svg>
+          </div>
+          <div class="route-points">
+            <div><span></span> Delhi to Rajasthan</div>
+            <div><span></span> Delhi to Shimla</div>
+            <div><span></span> Delhi to Kashmir</div>
+            <div><span></span> Delhi to Manali</div>
+            <div><span></span> Delhi to Odisha</div>
+            <div><span></span> Delhi to Ladakh</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="destinations section" id="destinations">
+      <div class="container section-head reveal">
+        <p class="eyebrow">Destination Journey</p>
+        <h2>Six premium escapes, each with its own mood and story.</h2>
+      </div>
+      <article class="destination-panel destination-rajasthan reveal" id="rajasthan">
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">Royal Experience</p>
+            <h3>Rajasthan</h3>
+            <p>Palaces, desert sunsets, heritage grandeur, and luxurious cultural immersion crafted with refined elegance.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>Oct - Mar</span></div>
+              <div><strong>Ideal For</strong><span>Family | Couple | Heritage</span></div>
+              <div><strong>Stay</strong><span>5 Nights / 6 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
+      <article class="destination-panel destination-shimla reveal" id="shimla">
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">Hill Luxury</p>
+            <h3>Shimla</h3>
+            <p>Misty mountains, cool breezes, and a calm premium stay experience shaped for peaceful getaways.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>Mar - Jun</span></div>
+              <div><strong>Ideal For</strong><span>Family | Couple</span></div>
+              <div><strong>Stay</strong><span>3 - 5 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
+      <article class="destination-panel destination-kashmir reveal" id="kashmir">
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">Heavenly Scenery</p>
+            <h3>Kashmir</h3>
+            <p>Graceful nature, lake-side charm, and unforgettable landscapes presented with a luxury storytelling feel.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>Mar - Oct</span></div>
+              <div><strong>Ideal For</strong><span>Couple | Family | Nature</span></div>
+              <div><strong>Stay</strong><span>4 - 6 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
+      <article class="destination-panel destination-manali reveal" id="manali">
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">Adventure Escape</p>
+            <h3>Manali</h3>
+            <p>Adventure-ready energy, alpine beauty, and a dynamic mountain journey balanced with comfort and style.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>Oct - Jun</span></div>
+              <div><strong>Ideal For</strong><span>Adventure | Couple | Friends</span></div>
+              <div><strong>Stay</strong><span>4 - 5 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
+      <article class="destination-panel destination-odisha reveal" id="odisha">
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">Cultural Luxury</p>
+            <h3>Odisha</h3>
+            <p>Temple heritage, coastal atmosphere, and immersive cultural storytelling with elegant visual transitions.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>Oct - Mar</span></div>
+              <div><strong>Ideal For</strong><span>Family | Culture | Spiritual</span></div>
+              <div><strong>Stay</strong><span>3 - 5 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
+      <article class="destination-panel destination-ladakh reveal" id="ladakh">
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">High-Altitude Majesty</p>
+            <h3>Ladakh</h3>
+            <p>Dramatic mountain depth, premium road-trip energy, and grand landscapes built for unforgettable memories.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>May - Sep</span></div>
+              <div><strong>Ideal For</strong><span>Adventure | Explorer | Group</span></div>
+              <div><strong>Stay</strong><span>5 - 7 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="features section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why Choose Us</p>
+          <h2>Carefully planned journeys with premium confidence.</h2>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card reveal">
+            <div class="icon">✦</div>
+            <h3>Verified Travel Assistance</h3>
+            <p>Trusted support designed to make planning and travel feel secure from start to finish.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="icon">✦</div>
+            <h3>Personalized Tour Planning</h3>
+            <p>Each route and package can be shaped around comfort, interests, and ideal travel style.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="icon">✦</div>
+            <h3>Dedicated Customer Support</h3>
+            <p>Quick, human-first communication before departure, during booking, and across the journey.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="icon">✦</div>
+            <h3>Comfortable Accommodation</h3>
+            <p>Stays are presented with a premium hospitality tone to support a luxury-first impression.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="icon">✦</div>
+            <h3>Transparent Pricing</h3>
+            <p>Clear package structure helps visitors feel trust rather than uncertainty.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="icon">✦</div>
+            <h3>Memorable Experiences</h3>
+            <p>Every section of the brand is built to feel like the beginning of a real journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="packages section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Luxury Packages</p>
+          <h2>Premium highlights that encourage enquiry and trust.</h2>
+        </div>
+        <div class="package-grid">
+          <div class="package-card reveal">
+            <h3>ROYAL RAJASTHAN</h3>
+            <p>5 Nights / 6 Days</p>
+            <ul role="list">
+              <li>Palaces</li>
+              <li>Desert Safari</li>
+              <li>Luxury Stay</li>
+            </ul>
+            <span>Starting From ₹XX,XXX</span>
+          </div>
+          <div class="package-card reveal">
+            <h3>KASHMIR DELIGHT</h3>
+            <p>4 Nights / 5 Days</p>
+            <ul role="list">
+              <li>Scenic Lakes</li>
+              <li>Nature Views</li>
+              <li>Comfort Hotels</li>
+            </ul>
+            <span>Starting From ₹XX,XXX</span>
+          </div>
+          <div class="package-card reveal">
+            <h3>LADAKH ESCAPE</h3>
+            <p>5 Nights / 6 Days</p>
+            <ul role="list">
+              <li>Road Journey</li>
+              <li>Mountain Views</li>
+              <li>Adventure Stay</li>
+            </ul>
+            <span>Starting From ₹XX,XXX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="timeline section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Travel Journey Timeline</p>
+          <h2>From first inquiry to lifelong memories.</h2>
+        </div>
+        <div class="timeline-track reveal">
+          <div class="timeline-step"><span>1</span><p>Tour Inquiry</p></div>
+          <div class="timeline-step"><span>2</span><p>Planning</p></div>
+          <div class="timeline-step"><span>3</span><p>Booking</p></div>
+          <div class="timeline-step"><span>4</span><p>Travel</p></div>
+          <div class="timeline-step"><span>5</span><p>Explore</p></div>
+          <div class="timeline-step"><span>6</span><p>Memories</p></div>
+        </div>
+      </div>
+    </section>
+    <section class="quote-band section-sm">
+      <div class="container">
+        <blockquote id="quoteRotator">“Travel is the only thing you buy that makes you richer.”</blockquote>
+      </div>
+    </section>
+    <section class="gallery section" id="gallery">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Gallery</p>
+          <h2>A premium visual moodboard of journeys and memories.</h2>
+        </div>
+        <div class="gallery-grid">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 1">
+            <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
+            <span>Luxury Escapes</span>
+          </button>
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 2">
+            <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
+            <span>Mountain Moods</span>
+          </button>
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 3">
+            <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
+            <span>Golden Journeys</span>
+          </button>
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 4">
+            <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
+            <span>Cultural Routes</span>
+          </button>
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 5">
+            <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
+            <span>Signature Moments</span>
+          </button>
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 6">
+            <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
+            <span>Scenic Luxury</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="testimonials section" id="testimonials">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Testimonials</p>
+          <h2>Words that reflect trust, comfort, and memorable travel.</h2>
+        </div>
+        <div class="testimonial-slider reveal" id="testimonialSlider">
+          <div class="testimonial-track" id="testimonialTrack">
+            <article class="testimonial-card active">
+              <div class="stars">★★★★★</div>
+              <p>“Beautiful planning, smooth communication, and a premium travel experience from beginning to end.”</p>
+              <h3>Priya Sharma</h3>
+            </article>
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“The itinerary felt thoughtful and professional. Everything looked elegant and well-managed.”</p>
+              <h3>Rahul Verma</h3>
+            </article>
+            <article class="testimonial-card">
+              <div class="stars">★★★★★</div>
+              <p>“A reliable travel planner for family trips. The support and responsiveness stood out.”</p>
+              <h3>Neha Kapoor</h3>
+            </article>
+          </div>
+          <div class="testimonial-controls">
+            <button id="prevTestimonial" aria-label="Previous testimonial">‹</button>
+            <button id="nextTestimonial" aria-label="Next testimonial">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="faq section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2>Quick answers for common travel questions.</h2>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>What is included in the package?</summary>
+            <p>Packages can include stay, itinerary planning, travel coordination, and destination guidance depending on the selected plan.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Do you provide transportation?</summary>
+            <p>Transportation support can be discussed during enquiry so the trip can be tailored to guest needs.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary>Are hotels included?</summary>
+            <p>Yes, accommodation planning can be part of the package structure based on budget and comfort preference.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    <section class="contact section" id="contact">
+      <div class="container contact-grid">
+        <div class="section-copy reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Begin your next premium journey today.</h2>
+          <p>Reach out directly for destination enquiries, personalized planning, and premium travel assistance.</p>
+          <div class="contact-cards">
+            <div class="contact-card glass-card">
+              <h3>Call</h3>
+              <a href="tel:+918527374956">+91 8527374956</a>
+            </div>
+            <div class="contact-card glass-card">
+              <h3>WhatsApp</h3>
+              <a href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer">Start Chat</a>
+            </div>
+            <div class="contact-card glass-card">
+              <h3>Visit</h3>
+              <p>2958/4, New Ranjeet Nagar, Patel Nagar, Delhi – 110008</p>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form glass-card reveal">
+          <label for="name">Your Name</label>
+          <input id="name" type="text" placeholder="Enter your name" />
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="tel" placeholder="Enter your number" />
+          <label for="destination">Preferred Destination</label>
+          <select id="destination">
+            <option>Rajasthan</option>
+            <option>Shimla</option>
+            <option>Kashmir</option>
+            <option>Manali</option>
+            <option>Odisha</option>
+            <option>Ladakh</option>
+          </select>
+          <label for="message">Travel Requirement</label>
+          <textarea id="message" rows="5" placeholder="Tell us about your trip plan"></textarea>
+          <button type="button" class="btn btn-gold" id="enquiryBtn">Send Enquiry</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>SN HOLIDAY PLANNER</h3>
+        <p>Luxury-inspired journeys across India with trust, elegance, and seamless planning.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul role="list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact Details</h4>
+        <ul role="list">
+          <li>Owner: Parmod Kumar Nanda</li>
+          <li><a href="tel:+918527374956">+91 8527374956</a></li>
+          <li>Patel Nagar, Delhi – 110008</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 SN HOLIDAY PLANNER. All rights reserved.</p>
+    </div>
+  </footer>
+  <a class="whatsapp-float" href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp">
+    <span>WhatsApp</span>
+  </a>
+  <div class="mobile-contact-bar">
+    <a href="tel:+918527374956">Call Now</a>
+    <a href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </div>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close gallery">×</button>
+    <img id="lightboxImage" src="" alt="Expanded gallery image">
+  </div>
+  <script src="js/theme.js"></script>
+  <script src="js/intro.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
