@@ -144,4 +144,135 @@ window.addEventListener("DOMContentLoaded", () => {
       parallax.style.transform = "translate(0,0)";
     });
   }
+
+
+  // ================================================================
+  // Interactive India Map — SVG ViewBox Coordinate System
+  // ================================================================
+  // The Wikipedia India outline SVG has viewBox: 0 0 666.67 777.33
+  // Coordinates are computed from real geographic lat/lon:
+  //   x = (lon - 68) / (97 - 68) * 666.67
+  //   y = (37 - lat) / (37 - 8) * 777.33
+  //
+  // Debug mode: set window.MAP_DEBUG = true in console, then reload
+  // ================================================================
+
+  const MAP_VIEWBOX = { w: 666.67, h: 777.33 };
+  const DEBUG = window.MAP_DEBUG || false;
+
+  const places = [
+    { name: "Delhi",       x: 212.2, y: 224.9, id: "home" },
+    { name: "Jaipur",      x: 179.1, y: 270.2, id: "rajasthan" },
+    { name: "Shimla",      x: 210.8, y: 158.1, id: "shimla" },
+    { name: "Manali",      x: 211.3, y: 127.6, id: "manali" },
+    { name: "Srinagar",    x: 156.1, y:  78.3, id: "kashmir" },
+    { name: "Leh",         x: 220.2, y:  76.4, id: "ladakh" },
+    { name: "Bhubaneswar", x: 409.9, y: 447.6, id: "odisha" }
+  ];
+
+  const routesSvg = document.getElementById("routes");
+  const hotspotsSvg = document.getElementById("hotspots");
+
+  // Validate all hotspots are within the SVG viewBox
+  places.forEach(p => {
+    if (p.x < 0 || p.x > MAP_VIEWBOX.w || p.y < 0 || p.y > MAP_VIEWBOX.h) {
+      console.warn(`⚠ Hotspot "${p.name}" is OUTSIDE viewBox: (${p.x}, ${p.y})`);
+    }
+  });
+
+  function drawRoutes(source) {
+    if (!routesSvg) return;
+    routesSvg.innerHTML = "";
+
+    places.forEach(dest => {
+      if (dest === source) return;
+
+      const mx = (source.x + dest.x) / 2;
+      const my = Math.min(source.y, dest.y) - 30;
+
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", `M ${source.x} ${source.y} Q ${mx} ${my} ${dest.x} ${dest.y}`);
+      path.setAttribute("class", "route-path-anim");
+      routesSvg.appendChild(path);
+    });
+  }
+
+  function createHotspots() {
+    if (!hotspotsSvg) return;
+
+    // Debug: show viewBox info
+    if (DEBUG) {
+      const dbg = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      dbg.textContent = `viewBox: 0 0 ${MAP_VIEWBOX.w} ${MAP_VIEWBOX.h}`;
+      dbg.setAttribute("x", "10");
+      dbg.setAttribute("y", "20");
+      dbg.setAttribute("fill", "#ff0");
+      dbg.setAttribute("font-size", "14");
+      dbg.setAttribute("font-family", "monospace");
+      hotspotsSvg.appendChild(dbg);
+    }
+
+    places.forEach(place => {
+      const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+      g.setAttribute("class", "hotspot-node");
+      g.setAttribute("transform", `translate(${place.x}, ${place.y})`);
+
+      // Pulsing outer ring
+      const pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      pulse.setAttribute("r", "12");
+      pulse.setAttribute("class", "hotspot-pulse-ring");
+
+      // Main marker circle
+      const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      circle.setAttribute("r", "7");
+      circle.setAttribute("class", "hotspot-circle");
+
+      // City label
+      const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+      text.textContent = place.name;
+      text.setAttribute("x", "14");
+      text.setAttribute("y", "5");
+      text.setAttribute("class", "hotspot-label");
+
+      // Invisible 48x48 hit box for accessibility
+      const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+      rect.setAttribute("x", "-24");
+      rect.setAttribute("y", "-24");
+      rect.setAttribute("width", "48");
+      rect.setAttribute("height", "48");
+      rect.setAttribute("fill", "transparent");
+      rect.setAttribute("cursor", "pointer");
+
+      g.appendChild(pulse);
+      g.appendChild(circle);
+      g.appendChild(text);
+      g.appendChild(rect);
+
+      // Debug: show coordinate values
+      if (DEBUG) {
+        const coord = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        coord.textContent = `(${place.x}, ${place.y})`;
+        coord.setAttribute("x", "14");
+        coord.setAttribute("y", "18");
+        coord.setAttribute("fill", "#ff0");
+        coord.setAttribute("font-size", "10");
+        coord.setAttribute("font-family", "monospace");
+        g.appendChild(coord);
+      }
+
+      g.addEventListener("click", () => {
+        drawRoutes(place);
+        const targetEl = document.getElementById(place.id);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+
+      hotspotsSvg.appendChild(g);
+    });
+  }
+
+  createHotspots();
+  drawRoutes(places[0]); // Default: routes from Delhi
+
 });

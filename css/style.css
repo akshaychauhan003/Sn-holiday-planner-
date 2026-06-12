@@ -95,6 +95,7 @@ button { border: 0; background: none; cursor: pointer; }
   top: 0;
   z-index: 2000;
   transition: var(--transition);
+  border-radius: 50px solid transparent;
 }
 .site-header.scrolled {
   backdrop-filter: blur(14px);
@@ -113,7 +114,7 @@ button { border: 0; background: none; cursor: pointer; }
   gap: 14px;
   color: var(--text);
 }
-.brand svg { width: 110px; }
+.brand svg, .brand img { width: 110px; height: auto; }
 .brand span {
   font-family: "Cinzel", serif;
   font-size: 15px;
@@ -340,50 +341,73 @@ html[data-theme="dark"] .stat-number { color: #fff; }
   grid-template-columns: 2fr 1fr;
   gap: 24px;
 }
-.route-map {
+.map-wrap {
   width: 100%;
-  min-height: 360px;
-}
-.india-shape {
-  fill: rgba(99,203,247,0.08);
-  stroke: rgba(99,203,247,0.25);
-  stroke-width: 2;
-}
-.route-map text {
-  fill: var(--text);
-  font-size: 16px;
-  font-weight: 700;
-}
-.city {
-  fill: var(--gold);
-  filter: drop-shadow(0 0 10px rgba(99,203,247,0.6));
-}
-.route-path {
-  fill: none;
-  stroke: url(#goldPath);
-  stroke-width: 3;
-  stroke-dasharray: 8 8;
-  animation: dashMove 12s linear infinite;
-}
-.route-points {
-  display: grid;
-  gap: 14px;
-  align-content: center;
-}
-.route-points div {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--text-soft);
-}
-.route-points span {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 16px rgba(99,203,247,0.5);
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
 }
 
+.route-path-anim {
+    fill: none;
+    stroke: url(#routeGradient);
+    stroke-width: 4;
+    stroke-linecap: round;
+    opacity: 0.7;
+    filter: drop-shadow(0 0 10px rgba(99, 203, 247, 0.6));
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawRoute 1.5s ease-out forwards;
+}
+
+@keyframes drawRoute {
+    to { stroke-dashoffset: 0; }
+}
+
+.hotspot-node {
+    cursor: pointer;
+}
+
+.hotspot-node:hover .hotspot-circle {
+    fill: #fff;
+    transform: scale(1.3);
+}
+
+.hotspot-circle {
+    fill: #ff9933;
+    stroke: #ffffff;
+    stroke-width: 3;
+    filter: url(#hotspotGlow);
+    transition: fill 0.3s ease, transform 0.3s ease;
+    transform-origin: center;
+}
+
+.hotspot-pulse-ring {
+    fill: none;
+    stroke: #ff9933;
+    stroke-width: 2;
+    opacity: 0.7;
+    animation: svgPulse 2s infinite ease-out;
+    transform-origin: center;
+}
+
+@keyframes svgPulse {
+    0%   { r: 7;  opacity: 0.8; }
+    100% { r: 22; opacity: 0; }
+}
+
+.hotspot-label {
+    fill: var(--navy, #1C61AD);
+    font-size: 14px;
+    font-weight: 800;
+    pointer-events: none;
+    font-family: var(--font-sans, "Manrope", sans-serif);
+    stroke: var(--bg, #FFFCFA);
+    stroke-width: 4;
+    paint-order: stroke;
+}
 .destination-tracker,
 .nav-dots {
   position: fixed;
@@ -747,21 +771,22 @@ html[data-theme="dark"] .contact-form textarea {
   position: fixed;
   right: 20px;
   bottom: 20px;
-  z-index: 1200;
-  background: #25d366;
+  /* z-index: 1200; */
+  /* background: #25d366; */
   color: #fff;
-  min-width: 62px;
-  height: 62px;
-  border-radius: 999px;
+  min-width: 100px;
+  height: 60px;
+  width: 60px;
+  /* border-radius: 100px; */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 18px;
-  box-shadow: 0 14px 34px rgba(37,211,102,0.3);
+  /* box-shadow: 0 14px 34px rgba(37,211,102,0.3); */
   animation: floatBounce 2.4s infinite;
   overflow: hidden;
 }
-.whatsapp-float:hover { min-width: 150px; }
+/* .whatsapp-float:hover { min-width: 0px; } */
 
 .mobile-contact-bar {
   display: none;
@@ -837,9 +862,18 @@ html[data-theme="dark"] .contact-form textarea {
   place-items: center;
   background: #000;
   color: #fff;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 .intro-overlay.hidden,
-.preloader.hidden { display: none; }
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.intro-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
 .intro-stage {
   text-align: center;
   position: relative;

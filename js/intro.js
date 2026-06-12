@@ -1,21 +1,38 @@
-window.addEventListener("DOMContentLoaded", () => {
+(function() {
   const intro = document.getElementById("introOverlay");
+  const introVideo = document.getElementById("introVideo");
   const preloader = document.getElementById("preloader");
-  const introSeen = localStorage.getItem("snhp-intro-seen");
+  const introShown = localStorage.getItem("introShown");
+
   const showSite = () => {
     if (preloader) {
       preloader.classList.remove("hidden");
       setTimeout(() => preloader.classList.add("hidden"), 1200);
     }
   };
-  if (introSeen) {
-    intro.classList.add("hidden");
+
+  const finishIntro = () => {
+    if (intro) {
+      intro.classList.add("hidden");
+      setTimeout(() => intro.remove(), 800);
+    }
     showSite();
-    return;
+  };
+
+  if (introShown === "true") {
+    if (intro) {
+      intro.style.display = "none";
+      intro.remove();
+    }
+    showSite();
+  } else {
+    localStorage.setItem("introShown", "true");
+    if (intro && introVideo) {
+      introVideo.addEventListener("ended", finishIntro);
+      introVideo.addEventListener("error", finishIntro);
+      introVideo.play().catch(() => finishIntro());
+    } else {
+      finishIntro();
+    }
   }
-  setTimeout(() => {
-    intro.classList.add("hidden");
-    localStorage.setItem("snhp-intro-seen", "true");
-    showSite();
-  }, 5200);
-});
+})();

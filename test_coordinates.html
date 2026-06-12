@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Hotspot Coordinate Test</title>
+<style>
+body { background: #111; display: flex; justify-content: center; padding: 40px; font-family: Arial; }
+.container { position: relative; width: 600px; }
+.container img { width: 100%; display: block; }
+.container svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+circle { fill: #ff9933; stroke: white; stroke-width: 3; }
+text { fill: white; font-size: 14px; font-weight: bold; }
+.info { color: #aaa; margin-top: 20px; text-align: center; font-size: 13px; }
+</style>
+</head>
+<body>
+<div>
+<div class="container">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/India_outline.svg" alt="India">
+  <svg viewBox="0 0 666.67 777.33">
+    <!-- Delhi -->
+    <circle cx="212.2" cy="224.9" r="7" />
+    <text x="224" y="229">Delhi (212,225)</text>
+    
+    <!-- Jaipur -->
+    <circle cx="179.1" cy="270.2" r="7" />
+    <text x="191" y="275">Jaipur (179,270)</text>
+    
+    <!-- Shimla -->
+    <circle cx="210.8" cy="158.1" r="7" />
+    <text x="223" y="163">Shimla (211,158)</text>
+    
+    <!-- Manali -->
+    <circle cx="211.3" cy="127.6" r="7" />
+    <text x="223" y="132">Manali (211,128)</text>
+    
+    <!-- Srinagar -->
+    <circle cx="156.1" cy="78.3" r="7" />
+    <text x="168" y="83">Srinagar (156,78)</text>
+    
+    <!-- Leh -->
+    <circle cx="220.2" cy="76.4" r="7" />
+    <text x="232" y="81">Leh (220,76)</text>
+    
+    <!-- Bhubaneswar -->
+    <circle cx="409.9" cy="447.6" r="7" />
+    <text x="422" y="452">Bhubaneswar (410,448)</text>
+  </svg>
+</div>
+<div class="info">viewBox: 0 0 666.67 x 777.33 | Coordinates computed from lat/lon mapping</div>
+</div>
+</body>
+</html>
