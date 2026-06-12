@@ -1,38 +1,71 @@
 (function() {
-  const intro = document.getElementById("introOverlay");
-  const introVideo = document.getElementById("introVideo");
-  const preloader = document.getElementById("preloader");
+  const intro = document.getElementById("intro-screen");
+  const video = document.getElementById("intro-video");
+  const loader = document.getElementById("loading-screen");
+  const skipBtn = document.getElementById("skip-intro-btn");
   const introShown = localStorage.getItem("introShown");
 
-  const showSite = () => {
-    if (preloader) {
-      preloader.classList.remove("hidden");
-      setTimeout(() => preloader.classList.add("hidden"), 1200);
+  const finishLoader = () => {
+    if (loader) {
+      loader.classList.remove("fade-in");
+      loader.classList.add("fade-out");
+      setTimeout(() => {
+        loader.remove();
+      }, 1200); // Wait 1.2s for loader fade-out transition
     }
   };
 
-  const finishIntro = () => {
-    if (intro) {
-      intro.classList.add("hidden");
-      setTimeout(() => intro.remove(), 800);
-    }
-    showSite();
+  const startLoader = () => {
+    // Keep loader visible for 1.8s while it animates
+    setTimeout(finishLoader, 1800);
   };
 
-  if (introShown === "true") {
-    if (intro) {
-      intro.style.display = "none";
-      intro.remove();
+  const transitionToLoader = () => {
+    // Prevent multiple triggerings
+    if (transitionToLoader.triggered) return;
+    transitionToLoader.triggered = true;
+
+    // Start cross-fade transition
+    if (loader) {
+      loader.classList.add("fade-in");
+      loader.style.visibility = "visible";
     }
-    showSite();
-  } else {
+    if (intro) {
+      intro.classList.add("fade-out");
+    }
+
+    // Save flag immediately on intro skip or end
     localStorage.setItem("introShown", "true");
-    if (intro && introVideo) {
-      introVideo.addEventListener("ended", finishIntro);
-      introVideo.addEventListener("error", finishIntro);
-      introVideo.play().catch(() => finishIntro());
-    } else {
-      finishIntro();
-    }
+
+    // After 1.2s transition completes, remove intro and start loader animation
+    setTimeout(() => {
+      if (intro) {
+        intro.remove();
+      }
+      startLoader();
+    }, 1200);
+  };
+
+  // If already shown in this browser, bypass both and display website instantly
+  if (introShown === "true") {
+    if (intro) intro.remove();
+    if (loader) loader.remove();
+    return;
+  }
+
+  // Play intro video
+  if (video) {
+    video.addEventListener("ended", transitionToLoader);
+    video.addEventListener("error", transitionToLoader);
+    // In case autoplay fails or is blocked, auto-fallback after a delay
+    video.play().catch(() => {
+      transitionToLoader();
+    });
+  } else {
+    transitionToLoader();
+  }
+
+  if (skipBtn) {
+    skipBtn.addEventListener("click", transitionToLoader);
   }
 })();
