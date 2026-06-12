@@ -11,8 +11,8 @@
   --text-soft: #4A7AAB;
   --gold: #63CBF7;
   --gold-strong: #42B0E3;
-  --navy: #1C61AD;
-  --navy-2: #154c8a;
+  --navy: #1c61ad;
+  --navy-2: #707b87;
   --border: rgba(17, 35, 61, 0.1);
   --shadow: 0 16px 40px rgba(8, 20, 40, 0.12);
   --radius: 24px;
@@ -28,9 +28,9 @@ html[data-theme="dark"] {
   --surface-2: #10233f;
   --text: #FFFCFA;
   --text-soft: #b9c4d5;
-  --gold: #63CBF7;
+  --gold: #63cbf7;
   --gold-strong: #85D7F8;
-  --navy: #8badb4;
+  --navy: ##8badb4;
   --navy-2: #10233f;
   --border: rgba(255,255,255,0.12);
   --shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
@@ -375,8 +375,22 @@ html[data-theme="dark"] .stat-number { color: #fff; }
     transform: scale(1.3);
 }
 
+.india-map-land {
+    fill: url(#mapGradientLight);
+    stroke: #c9a55a;
+    stroke-width: 1.2px;
+    stroke-linejoin: round;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+html[data-theme="dark"] .india-map-land {
+    fill: url(#mapGradientDark);
+    stroke: #c9a55a;
+    stroke-width: 1.2px;
+}
+
 .hotspot-circle {
-    fill: #ff9933;
+    fill: var(--gold-strong, #42B0E3);
     stroke: #ffffff;
     stroke-width: 3;
     filter: url(#hotspotGlow);
@@ -386,7 +400,7 @@ html[data-theme="dark"] .stat-number { color: #fff; }
 
 .hotspot-pulse-ring {
     fill: none;
-    stroke: #ff9933;
+    stroke: var(--gold, #63CBF7);
     stroke-width: 2;
     opacity: 0.7;
     animation: svgPulse 2s infinite ease-out;
@@ -399,14 +413,42 @@ html[data-theme="dark"] .stat-number { color: #fff; }
 }
 
 .hotspot-label {
-    fill: var(--navy, #1C61AD);
     font-size: 14px;
     font-weight: 800;
     pointer-events: none;
     font-family: var(--font-sans, "Manrope", sans-serif);
-    stroke: var(--bg, #FFFCFA);
-    stroke-width: 4;
+    fill: var(--navy, #1C61AD);
+    stroke: #ffffff;
+    stroke-width: 3.5px;
+    stroke-linejoin: round;
     paint-order: stroke;
+    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.45));
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+html[data-theme="dark"] .hotspot-label {
+    fill: #ffd993; /* Premium golden champagne */
+    stroke: #07111f; /* Contrast backdrop */
+}
+
+/* Responsive font sizes for SVG city labels inside coordinate system */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .hotspot-label {
+    font-size: 16px;
+    stroke-width: 4px;
+  }
+}
+@media (max-width: 767px) {
+  .hotspot-label {
+    font-size: 19px;
+    stroke-width: 4.5px;
+  }
+}
+@media (max-width: 480px) {
+  .hotspot-label {
+    font-size: 23px;
+    stroke-width: 5px;
+  }
 }
 .destination-tracker,
 .nav-dots {
@@ -743,7 +785,7 @@ html[data-theme="dark"] .contact-form textarea {
 }
 
 .site-footer {
-  background: var(--navy);
+  background: (var(--gold));
   color: #fff;
   padding-top: 60px;
   padding-bottom: 80px;
@@ -949,4 +991,47 @@ html[data-theme="dark"] .contact-form textarea {
   font-family: "Cinzel", serif;
   color: var(--gold);
   margin-bottom: 8px;
+}
+
+#unmute-intro-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 10000;
+  padding: 10px 24px;
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 6px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#unmute-intro-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes lineSweep {
+  0% {
+    transform: scaleX(0.1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0.1);
+    opacity: 0.3;
+  }
 }

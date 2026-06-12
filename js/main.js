@@ -161,13 +161,13 @@ window.addEventListener("DOMContentLoaded", () => {
   const DEBUG = window.MAP_DEBUG || false;
 
   const places = [
-    { name: "Delhi",       x: 212.2, y: 224.9, id: "home" },
-    { name: "Jaipur",      x: 179.1, y: 270.2, id: "rajasthan" },
-    { name: "Shimla",      x: 210.8, y: 158.1, id: "shimla" },
-    { name: "Manali",      x: 211.3, y: 127.6, id: "manali" },
-    { name: "Srinagar",    x: 156.1, y:  78.3, id: "kashmir" },
-    { name: "Leh",         x: 220.2, y:  76.4, id: "ladakh" },
-    { name: "Bhubaneswar", x: 409.9, y: 447.6, id: "odisha" }
+    { name: "Delhi",       x: 212.2, y: 224.9, id: "home", labelPos: "right" },
+    { name: "Jaipur",      x: 179.1, y: 270.2, id: "rajasthan", labelPos: "left" },
+    { name: "Shimla",      x: 210.8, y: 158.1, id: "shimla", labelPos: "right" },
+    { name: "Manali",      x: 211.3, y: 127.6, id: "manali", labelPos: "right" },
+    { name: "Srinagar",    x: 156.1, y:  78.3, id: "kashmir", labelPos: "left" },
+    { name: "Leh",         x: 220.2, y:  76.4, id: "ladakh", labelPos: "right" },
+    { name: "Bhubaneswar", x: 409.9, y: 447.6, id: "odisha", labelPos: "right" }
   ];
 
   const routesSvg = document.getElementById("routes");
@@ -227,10 +227,16 @@ window.addEventListener("DOMContentLoaded", () => {
       circle.setAttribute("r", "7");
       circle.setAttribute("class", "hotspot-circle");
 
-      // City label
+      // City label with custom left/right alignment to prevent overlapping
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
       text.textContent = place.name;
-      text.setAttribute("x", "14");
+      if (place.labelPos === "left") {
+        text.setAttribute("x", "-14");
+        text.setAttribute("text-anchor", "end");
+      } else {
+        text.setAttribute("x", "14");
+        text.setAttribute("text-anchor", "start");
+      }
       text.setAttribute("y", "5");
       text.setAttribute("class", "hotspot-label");
 

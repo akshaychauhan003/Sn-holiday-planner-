@@ -4,29 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SN HOLIDAY PLANNER | Luxury Travel Experience</title>
-  <meta name="description" content="SN HOLIDAY PLANNER is a premium travel website offering immersive destination journeys across Rajasthan, Shimla, Kashmir, Manali, Odisha, and Ladakh." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Additional Browser Support -->
+  <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Optional Sizes -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/logo.png">
+  <meta name="description"
+    content="SN HOLIDAY PLANNER is a premium travel website offering immersive destination journeys across Rajasthan, Shimla, Kashmir, Manali, Odisha, and Ladakh." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="scroll-progress" id="scrollProgress"></div>
   <div id="intro-screen">
-    <video id="intro-video" autoplay muted playsinline preload="auto">
+    <video id="intro-video" autoplay playsinline preload="auto">
       <source src="assets/videos/intro.mp4" type="video/mp4" />
     </video>
     <button id="skip-intro-btn">Skip Intro</button>
   </div>
-  <div id="loading-screen" aria-hidden="true">
-    <div class="loader-content">
-      <img src="assets/logo.png" alt="Logo" class="loader-logo">
-      <h2>SN HOLIDAY PLANNER</h2>
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-inner">
       <span class="preloader-line"></span>
-      <p>Crafting a premium journey...</p>
     </div>
   </div>
   <div class="top-support-bar">
@@ -37,7 +48,7 @@
     <nav class="navbar container" aria-label="Primary navigation">
       <a href="#home" class="brand">
         <img src="assets/logo.png" alt="SN Holiday Planner logo" class="logo">
-        <span>SN HOLIDAY PLANNER</span>
+        <span>SN HOLIDAY PLANNER | Dream ✦ Explore ✦ Experience</span>
       </a>
       <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -88,7 +99,8 @@
       <div class="container hero-content reveal">
         <p class="eyebrow">Luxury Travel • India Journeys • Premium Planning</p>
         <h1>Travel with elegance, discover with wonder.</h1>
-        <p class="hero-copy">SN HOLIDAY PLANNER creates premium travel experiences across Rajasthan, Shimla, Kashmir, Manali, Odisha, and Ladakh with trust, comfort, and cinematic presentation.</p>
+        <p class="hero-copy">SN HOLIDAY PLANNER creates premium travel experiences across Rajasthan, Shimla, Kashmir,
+          Manali, Odisha, and Ladakh with trust, comfort, and cinematic presentation.</p>
         <div class="hero-actions">
           <a href="#destinations" class="btn btn-gold">Explore Destinations</a>
           <a href="#contact" class="btn btn-outline">Contact Us</a>
@@ -104,7 +116,9 @@
         <div class="section-copy reveal">
           <p class="eyebrow">About the Brand</p>
           <h2>Trusted premium travel planning with a personal touch.</h2>
-          <p>SN HOLIDAY PLANNER is designed to present travel not as a booking form, but as an emotional journey. The brand blends premium presentation, thoughtful planning, and destination storytelling to create confidence before the trip even begins.</p>
+          <p>SN HOLIDAY PLANNER is designed to present travel not as a booking form, but as an emotional journey. The
+            brand blends premium presentation, thoughtful planning, and destination storytelling to create confidence
+            before the trip even begins.</p>
           <div class="owner-card glass-card">
             <h3>Owner Information</h3>
             <p><strong>Parmod Kumar Nanda</strong></p>
@@ -113,42 +127,127 @@
           </div>
         </div>
         <div class="stats-panel reveal">
-          <div class="stat-card"><span class="stat-number" data-target="1000">0</span><span class="plus">+</span><p>Happy Travelers</p></div>
-          <div class="stat-card"><span class="stat-number" data-target="6">0</span><p>Destinations</p></div>
-          <div class="stat-card"><span class="stat-number" data-target="24">0</span><span class="plus">/7</span><p>Support</p></div>
-          <div class="stat-card"><span class="stat-number" data-target="100">0</span><span class="plus">%</span><p>Customer Assistance</p></div>
+          <div class="stat-card"><span class="stat-number" data-target="1000">0</span><span class="plus">+</span>
+            <p>Happy Travelers</p>
+          </div>
+          <div class="stat-card"><span class="stat-number" data-target="6">0</span>
+            <p>Destinations</p>
+          </div>
+          <div class="stat-card"><span class="stat-number" data-target="24">0</span><span class="plus">/7</span>
+            <p>Support</p>
+          </div>
+          <div class="stat-card"><span class="stat-number" data-target="100">0</span><span class="plus">%</span>
+            <p>Customer Assistance</p>
+          </div>
         </div>
       </div>
     </section>
     <section class="map-section section">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Explore India</p>
-          <h2>Click any destination to begin your journey.</h2>
+          <p class="eyebrow">Interactive Journey Map</p>
+          <h2>Routes that begin in Delhi and unfold across India.</h2>
         </div>
-        <div class="map-board glass-card reveal" style="display: block; padding: 28px;">
-          <div class="map-container" style="position: relative; width: 100%; max-width: 666px; margin: 0 auto;">
-            <img class="india-map" src="https://upload.wikimedia.org/wikipedia/commons/b/b4/India_outline.svg" style="width: 100%; height: auto; display: block; opacity: 0.9; filter: drop-shadow(0 12px 24px rgba(28, 97, 173, 0.15));" alt="India Map">
-            <svg id="interactive-overlay" viewBox="0 0 666.67 777.33" preserveAspectRatio="xMidYMid meet" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
+        <div class="map-board glass-card reveal">
+          <div class="map-wrap">
+            <svg viewBox="0 0 666.67 777.33" class="interactive-india-map"
+              aria-label="Interactive India Destination Map">
               <defs>
-                <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#63CBF7" stop-opacity="0.8" />
-                  <stop offset="100%" stop-color="#42B0E3" stop-opacity="0.8" />
+                <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#63CBF7" stop-opacity="0.4" />
+                  <stop offset="100%" stop-color="#42B0E3" stop-opacity="1" />
                 </linearGradient>
-                <filter id="hotspotGlow">
-                  <feGaussianBlur stdDeviation="4" result="blur"/>
-                  <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
               </defs>
-              <g id="routes"></g>
-              <g id="hotspots" style="pointer-events: auto;"></g>
+              <path class="india-shape" d="svg2226"></path>
+              <path class="network-route" d="M210 140 L300 120 L260 200 L270 230 L160 360 L460 480"></path>
+
+              <g class="hotspot" data-target="kashmir" transform="translate(210, 140)">
+                <circle class="hotspot-pulse" r="16"></circle>
+                <circle class="hotspot-center" r="6"></circle>
+                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
+                </rect>
+                <g class="tooltip">
+                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
+                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Kashmir</text>
+                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Paradise on Earth</text>
+                </g>
+              </g>
+
+              <g class="hotspot" data-target="ladakh" transform="translate(300, 120)">
+                <circle class="hotspot-pulse" r="16"></circle>
+                <circle class="hotspot-center" r="6"></circle>
+                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
+                </rect>
+                <g class="tooltip">
+                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
+                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Ladakh</text>
+                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">High-Altitude Majesty</text>
+                </g>
+              </g>
+
+              <g class="hotspot" data-target="manali" transform="translate(260, 200)">
+                <circle class="hotspot-pulse" r="16"></circle>
+                <circle class="hotspot-center" r="6"></circle>
+                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
+                </rect>
+                <g class="tooltip">
+                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
+                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Manali</text>
+                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Adventure Escape</text>
+                </g>
+              </g>
+
+              <g class="hotspot" data-target="shimla" transform="translate(270, 230)">
+                <circle class="hotspot-pulse" r="16"></circle>
+                <circle class="hotspot-center" r="6"></circle>
+                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
+                </rect>
+                <g class="tooltip">
+                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
+                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Shimla</text>
+                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Hill Luxury</text>
+                </g>
+              </g>
+
+              <g class="hotspot" data-target="rajasthan" transform="translate(160, 360)">
+                <circle class="hotspot-pulse" r="16"></circle>
+                <circle class="hotspot-center" r="6"></circle>
+                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
+                </rect>
+                <g class="tooltip">
+                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
+                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Rajasthan</text>
+                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Royal Experience</text>
+                </g>
+              </g>
+
+              <g class="hotspot" data-target="odisha" transform="translate(460, 480)">
+                <circle class="hotspot-pulse" r="16"></circle>
+                <circle class="hotspot-center" r="6"></circle>
+                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
+                </rect>
+                <g class="tooltip">
+                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
+                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Odisha</text>
+                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Cultural Heritage</text>
+                </g>
+              </g>
+
             </svg>
+            <div class="note" style="text-align: center; margin-top: 14px; color: var(--text-soft); font-size: 14px;">
+              Click any destination to begin your journey</div>
           </div>
-          <p style="text-align: center; margin-top: 16px; color: var(--text-soft); font-size: 13px;">SN Holiday Planner's Travel Network • Click a city to explore</p>
         </div>
+        <div class="route-points">
+          div><span></span> Delhi </div>
+        <div><span></span> Rajasthan</div>
+        <div><span></span> Shimla</div>
+        <div><span></span> Kashmir</div>
+        <div><span></span> Manali</div>
+        <div><span></span> Odisha</div>
+        <div><span></span> Ladakh</div>
+      </div>
+      </div>
       </div>
     </section>
     <section class="destinations section" id="destinations">
@@ -161,7 +260,8 @@
           <div class="destination-copy">
             <p class="eyebrow">Royal Experience</p>
             <h3>Rajasthan</h3>
-            <p>Palaces, desert sunsets, heritage grandeur, and luxurious cultural immersion crafted with refined elegance.</p>
+            <p>Palaces, desert sunsets, heritage grandeur, and luxurious cultural immersion crafted with refined
+              elegance.</p>
             <div class="mini-info">
               <div><strong>Best Time</strong><span>Oct - Mar</span></div>
               <div><strong>Ideal For</strong><span>Family | Couple | Heritage</span></div>
@@ -191,7 +291,8 @@
           <div class="destination-copy">
             <p class="eyebrow">Heavenly Scenery</p>
             <h3>Kashmir</h3>
-            <p>Graceful nature, lake-side charm, and unforgettable landscapes presented with a luxury storytelling feel.</p>
+            <p>Graceful nature, lake-side charm, and unforgettable landscapes presented with a luxury storytelling feel.
+            </p>
             <div class="mini-info">
               <div><strong>Best Time</strong><span>Mar - Oct</span></div>
               <div><strong>Ideal For</strong><span>Couple | Family | Nature</span></div>
@@ -206,7 +307,8 @@
           <div class="destination-copy">
             <p class="eyebrow">Adventure Escape</p>
             <h3>Manali</h3>
-            <p>Adventure-ready energy, alpine beauty, and a dynamic mountain journey balanced with comfort and style.</p>
+            <p>Adventure-ready energy, alpine beauty, and a dynamic mountain journey balanced with comfort and style.
+            </p>
             <div class="mini-info">
               <div><strong>Best Time</strong><span>Oct - Jun</span></div>
               <div><strong>Ideal For</strong><span>Adventure | Couple | Friends</span></div>
@@ -221,7 +323,8 @@
           <div class="destination-copy">
             <p class="eyebrow">Cultural Luxury</p>
             <h3>Odisha</h3>
-            <p>Temple heritage, coastal atmosphere, and immersive cultural storytelling with elegant visual transitions.</p>
+            <p>Temple heritage, coastal atmosphere, and immersive cultural storytelling with elegant visual transitions.
+            </p>
             <div class="mini-info">
               <div><strong>Best Time</strong><span>Oct - Mar</span></div>
               <div><strong>Ideal For</strong><span>Family | Culture | Spiritual</span></div>
@@ -236,7 +339,8 @@
           <div class="destination-copy">
             <p class="eyebrow">High-Altitude Majesty</p>
             <h3>Ladakh</h3>
-            <p>Dramatic mountain depth, premium road-trip energy, and grand landscapes built for unforgettable memories.</p>
+            <p>Dramatic mountain depth, premium road-trip energy, and grand landscapes built for unforgettable memories.
+            </p>
             <div class="mini-info">
               <div><strong>Best Time</strong><span>May - Sep</span></div>
               <div><strong>Ideal For</strong><span>Adventure | Explorer | Group</span></div>
@@ -334,12 +438,24 @@
           <h2>From first inquiry to lifelong memories.</h2>
         </div>
         <div class="timeline-track reveal">
-          <div class="timeline-step"><span>1</span><p>Tour Inquiry</p></div>
-          <div class="timeline-step"><span>2</span><p>Planning</p></div>
-          <div class="timeline-step"><span>3</span><p>Booking</p></div>
-          <div class="timeline-step"><span>4</span><p>Travel</p></div>
-          <div class="timeline-step"><span>5</span><p>Explore</p></div>
-          <div class="timeline-step"><span>6</span><p>Memories</p></div>
+          <div class="timeline-step"><span>1</span>
+            <p>Tour Inquiry</p>
+          </div>
+          <div class="timeline-step"><span>2</span>
+            <p>Planning</p>
+          </div>
+          <div class="timeline-step"><span>3</span>
+            <p>Booking</p>
+          </div>
+          <div class="timeline-step"><span>4</span>
+            <p>Travel</p>
+          </div>
+          <div class="timeline-step"><span>5</span>
+            <p>Explore</p>
+          </div>
+          <div class="timeline-step"><span>6</span>
+            <p>Memories</p>
+          </div>
         </div>
       </div>
     </section>
@@ -355,27 +471,33 @@
           <h2>A premium visual moodboard of journeys and memories.</h2>
         </div>
         <div class="gallery-grid">
-          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 1">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg"
+            aria-label="Open travel gallery image 1">
             <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
             <span>Luxury Escapes</span>
           </button>
-          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 2">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg"
+            aria-label="Open travel gallery image 2">
             <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
             <span>Mountain Moods</span>
           </button>
-          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 3">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg"
+            aria-label="Open travel gallery image 3">
             <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
             <span>Golden Journeys</span>
           </button>
-          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 4">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg"
+            aria-label="Open travel gallery image 4">
             <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
             <span>Cultural Routes</span>
           </button>
-          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 5">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg"
+            aria-label="Open travel gallery image 5">
             <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
             <span>Signature Moments</span>
           </button>
-          <button class="gallery-item reveal" data-full="assets/images/abc.jpg" aria-label="Open travel gallery image 6">
+          <button class="gallery-item reveal" data-full="assets/images/abc.jpg"
+            aria-label="Open travel gallery image 6">
             <img src="assets/images/abc.jpg" alt="Travel gallery image" loading="lazy">
             <span>Scenic Luxury</span>
           </button>
@@ -422,7 +544,8 @@
         <div class="faq-list">
           <details class="faq-item reveal">
             <summary>What is included in the package?</summary>
-            <p>Packages can include stay, itinerary planning, travel coordination, and destination guidance depending on the selected plan.</p>
+            <p>Packages can include stay, itinerary planning, travel coordination, and destination guidance depending on
+              the selected plan.</p>
           </details>
           <details class="faq-item reveal">
             <summary>Do you provide transportation?</summary>
@@ -430,7 +553,8 @@
           </details>
           <details class="faq-item reveal">
             <summary>Are hotels included?</summary>
-            <p>Yes, accommodation planning can be part of the package structure based on budget and comfort preference.</p>
+            <p>Yes, accommodation planning can be part of the package structure based on budget and comfort preference.
+            </p>
           </details>
         </div>
       </div>
@@ -447,7 +571,7 @@
               <a href="tel:+918527374956">+91 8527374956</a>
             </div>
             <div class="contact-card glass-card">
-              <h3>WhatsApp</h3>
+              <h3>Whatsapp</h3>
               <a href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer">Start Chat</a>
             </div>
             <div class="contact-card glass-card">
@@ -506,8 +630,9 @@
       <p>© 2026 SN HOLIDAY PLANNER. All rights reserved.</p>
     </div>
   </footer>
-  <a class="whatsapp-float" href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp">
-    <span><img src="assets/whatsapp.png" alt=""></span>
+  <a class="whatsapp-float" href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer"
+    aria-label="Open WhatsApp">
+    <span>WhatsApp</span>
   </a>
   <div class="mobile-contact-bar">
     <a href="tel:+918527374956">Call Now</a>
@@ -523,4 +648,5 @@
   <script src="js/scroll.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>

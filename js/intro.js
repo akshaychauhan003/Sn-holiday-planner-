@@ -3,7 +3,8 @@
   const video = document.getElementById("intro-video");
   const loader = document.getElementById("loading-screen");
   const skipBtn = document.getElementById("skip-intro-btn");
-  const introShown = localStorage.getItem("introShown");
+  const unmuteBtn = document.getElementById("unmute-intro-btn");
+  const introShown = sessionStorage.getItem("introShown");
 
   const finishLoader = () => {
     if (loader) {
@@ -34,8 +35,8 @@
       intro.classList.add("fade-out");
     }
 
-    // Save flag immediately on intro skip or end
-    localStorage.setItem("introShown", "true");
+    // Save flag immediately in sessionStorage on intro skip or end
+    sessionStorage.setItem("introShown", "true");
 
     // After 1.2s transition completes, remove intro and start loader animation
     setTimeout(() => {
@@ -46,26 +47,64 @@
     }, 1200);
   };
 
-  // If already shown in this browser, bypass both and display website instantly
+  // If already shown in this browser session, bypass both and display website instantly
   if (introShown === "true") {
     if (intro) intro.remove();
     if (loader) loader.remove();
     return;
   }
 
+  // Helper function to unmute the video
+  const unmuteVideo = () => {
+    if (video) {
+      video.muted = false;
+      if (unmuteBtn) {
+        unmuteBtn.style.display = "none";
+      }
+    }
+  };
+
+  if (unmuteBtn) {
+    unmuteBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent trigger on intro-screen click
+      unmuteVideo();
+    });
+  }
+
+  if (intro) {
+    // Tapping anywhere on the intro screen also unmutes
+    intro.addEventListener("click", unmuteVideo);
+  }
+
   // Play intro video
   if (video) {
     video.addEventListener("ended", transitionToLoader);
     video.addEventListener("error", transitionToLoader);
-    // In case autoplay fails or is blocked, auto-fallback after a delay
-    video.play().catch(() => {
-      transitionToLoader();
+
+    // Try to play unmuted first
+    video.muted = false;
+    video.play().then(() => {
+      // Unmuted autoplay succeeded
+      if (unmuteBtn) unmuteBtn.style.display = "none";
+    }).catch(() => {
+      // Unmuted autoplay blocked by browser policy, try muted autoplay
+      video.muted = true;
+      video.play().then(() => {
+        // Muted autoplay succeeded, show unmute control
+        if (unmuteBtn) unmuteBtn.style.display = "flex";
+      }).catch(() => {
+        // If even muted autoplay fails, transition immediately
+        transitionToLoader();
+      });
     });
   } else {
     transitionToLoader();
   }
 
   if (skipBtn) {
-    skipBtn.addEventListener("click", transitionToLoader);
+    skipBtn.addEventListener("click", (e) => {
+      e.stopPropagation(); // prevent unmute trigger when clicking skip
+      transitionToLoader();
+    });
   }
 })();
