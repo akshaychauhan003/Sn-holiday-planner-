@@ -1228,3 +1228,109 @@ html[data-theme="dark"] .contact-form textarea {
     opacity: 0.3;
   }
 }
+
+/* Redesigned Luxury Quote Band */
+.quote-band {
+  background: radial-gradient(circle at center, #0a1424 0%, #050b14 100%);
+  padding: 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-band::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 203, 247, 0.06) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.quote-card {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 48px;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 32px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  text-align: center;
+  overflow: hidden;
+}
+
+.quote-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(99, 203, 247, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+  animation: glowPulse 8s infinite alternate ease-in-out;
+}
+
+@keyframes glowPulse {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.quote-mark {
+  font-family: "Cinzel", serif;
+  font-size: 96px;
+  line-height: 1;
+  color: rgba(99, 203, 247, 0.12);
+  display: block;
+  margin-bottom: -15px;
+  user-select: none;
+}
+
+#quoteRotator {
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.45;
+  margin-bottom: 28px;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  font-style: normal;
+}
+
+.quote-divider {
+  width: 120px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.quote-divider::before {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--gold);
+  font-size: 11px;
+  background: #081220;
+  padding: 0 8px;
+}
+
+.quote-tagline {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  font-weight: 600;
+  opacity: 0.95;
+}
