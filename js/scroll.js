@@ -9,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let lastScrollTop = 0;
   function onScroll() {
     const scrollTop = window.scrollY;
-    
+
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;

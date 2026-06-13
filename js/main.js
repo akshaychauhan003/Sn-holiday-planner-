@@ -61,7 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const rect = v.getBoundingClientRect();
       const isVisible = (rect.top < window.innerHeight && rect.bottom > 0);
       if (isVisible && v.src) {
-        v.play().catch(e => {});
+        v.play().catch(e => { });
       }
     });
   }
@@ -146,12 +146,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const DEBUG = window.MAP_DEBUG || false;
 
   const places = [
-    { name: "Delhi",       x: 212.2, y: 224.9, id: "home" },
-    { name: "Jaipur",      x: 179.1, y: 270.2, id: "rajasthan" },
-    { name: "Shimla",      x: 210.8, y: 158.1, id: "shimla" },
-    { name: "Manali",      x: 211.3, y: 127.6, id: "manali" },
-    { name: "Srinagar",    x: 156.1, y:  78.3, id: "kashmir" },
-    { name: "Leh",         x: 220.2, y:  76.4, id: "ladakh" },
+    { name: "Delhi", x: 212.2, y: 224.9, id: "home" },
+    { name: "Jaipur", x: 179.1, y: 270.2, id: "rajasthan" },
+    { name: "Shimla", x: 210.8, y: 158.1, id: "shimla" },
+    { name: "Manali", x: 211.3, y: 127.6, id: "manali" },
+    { name: "Srinagar", x: 156.1, y: 78.3, id: "kashmir" },
+    { name: "Leh", x: 220.2, y: 76.4, id: "ladakh" },
     { name: "Bhubaneswar", x: 409.9, y: 447.6, id: "odisha" }
   ];
 
@@ -248,10 +248,10 @@ window.addEventListener("DOMContentLoaded", () => {
       video.removeAttribute("data-src");
       video.load();
     }
-    
+
     video.play().then(() => {
       video.classList.add("playing");
-    }).catch(() => {});
+    }).catch(() => { });
 
     video.addEventListener("playing", () => {
       video.classList.add("playing");
@@ -272,7 +272,7 @@ window.addEventListener("DOMContentLoaded", () => {
       videos.forEach(v => { if (v.src) v.pause(); });
     } else {
       videos.forEach(v => {
-        if (v.src) v.play().catch(() => {});
+        if (v.src) v.play().catch(() => { });
       });
     }
   });
@@ -304,7 +304,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const extensions = ["jpg", "png", "jpeg", "webp"];
       const directories = ["assets/images/", "assets/"];
       let attempts = [];
-      
+
       directories.forEach(dir => {
         extensions.forEach(ext => {
           attempts.push(`${dir}${baseFilename}.${ext}`);
@@ -328,7 +328,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
         tempImg.src = testUrl;
       };
-      
+
       tryLoad();
     });
 
@@ -355,7 +355,7 @@ window.addEventListener("DOMContentLoaded", () => {
       const extensions = ["jpg", "png", "jpeg", "webp"];
       const directories = ["assets/images/", "assets/"];
       let attempts = [];
-      
+
       directories.forEach(dir => {
         extensions.forEach(ext => {
           attempts.push(`${dir}${baseFilename}.${ext}`);
@@ -380,7 +380,7 @@ window.addEventListener("DOMContentLoaded", () => {
         };
         tempImg.src = testUrl;
       };
-      
+
       tryLoad();
     });
   };
