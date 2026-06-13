@@ -10,16 +10,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function onScroll() {
     const scrollTop = window.scrollY;
     
-    // Hide header on scroll down, show on scroll up
-    if (scrollTop > 80) {
-      if (scrollTop > lastScrollTop) {
-        header.style.transform = "translateY(-100%)";
-      } else {
-        header.style.transform = "translateY(0)";
-      }
-    } else {
-      header.style.transform = "translateY(0)";
-    }
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;

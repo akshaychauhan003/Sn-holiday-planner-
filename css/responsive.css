@@ -61,12 +61,20 @@
   .stats-panel { grid-template-columns: 1fr; }
   .mini-info { grid-template-columns: 1fr; }
   .mobile-contact-bar { display: grid; }
-  .whatsapp-float { bottom: 78px; }
-  .back-to-top { bottom: 148px; }
+  .whatsapp-float {
+    bottom: calc(78px + env(safe-area-inset-bottom));
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+  .back-to-top {
+    bottom: calc(148px + env(safe-area-inset-bottom));
+    right: 20px;
+    z-index: 999998;
+  }
 
   .site-header {
-    position: sticky;
-    top: 0;
+    position: relative;
     width: 100%;
     padding: 14px 0;
     backdrop-filter: blur(16px);
@@ -174,6 +182,9 @@
     flex-direction: column;
     text-align: center;
     gap: 6px;
+  }
+  .top-support-bar .bar-separator {
+    display: none;
   }
   .route-map { min-height: 260px; }
 }
