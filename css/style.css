@@ -363,22 +363,43 @@ html[data-theme="dark"] .theme-toggle .sun {
   animation: heroZoom 18s linear infinite alternate;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(5, 15, 28, 0.45), rgba(5, 15, 28, 0.76)),
-    linear-gradient(135deg, rgba(12, 29, 55, 0.82), rgba(12, 29, 55, 0.45));
+.hero-content {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  isolation: isolate;
 }
 
-.hero-parallax {
+.content-bg-video {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(99, 203, 247, 0.2), transparent 24%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.06), transparent 20%);
-  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
 }
 
+.content-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 15, 28, 0.65);
+  backdrop-filter: blur(2px);
+  z-index: -1;
+}
+
+.hero-text {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1,
+.hero-content p,
+.hero-content a {
+  color: #fff;
+}
 .hero-content {
   position: relative;
   z-index: 2;
