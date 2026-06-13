@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -145,109 +146,32 @@
     <section class="map-section section">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow">Interactive Journey Map</p>
-          <h2>Routes that begin in Delhi and unfold across India.</h2>
+          <p class="eyebrow">Explore India</p>
+          <h2>Click any destination to begin your journey.</h2>
         </div>
-        <div class="map-board glass-card reveal">
-          <div class="map-wrap">
-            <svg viewBox="0 0 666.67 777.33" class="interactive-india-map"
-              aria-label="Interactive India Destination Map">
+        <div class="map-board glass-card reveal" style="display: block; padding: 28px;">
+          <div class="map-container" style="position: relative; width: 100%; max-width: 666px; margin: 0 auto;">
+            <img class="india-map" src="assets/india-map.svg" style="width: 100%; height: auto; display: block; opacity: 0.9; filter: drop-shadow(0 12px 24px rgba(28, 97, 173, 0.15));" alt="India Map">
+            <svg id="interactive-overlay" viewBox="0 0 666.67 777.33" preserveAspectRatio="xMidYMid meet" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none;">
               <defs>
-                <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#63CBF7" stop-opacity="0.4" />
-                  <stop offset="100%" stop-color="#42B0E3" stop-opacity="1" />
+                <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#63CBF7" stop-opacity="0.8" />
+                  <stop offset="100%" stop-color="#42B0E3" stop-opacity="0.8" />
                 </linearGradient>
+                <filter id="hotspotGlow">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
               </defs>
-              <path class="india-shape" d="svg2226"></path>
-              <path class="network-route" d="M210 140 L300 120 L260 200 L270 230 L160 360 L460 480"></path>
-
-              <g class="hotspot" data-target="kashmir" transform="translate(210, 140)">
-                <circle class="hotspot-pulse" r="16"></circle>
-                <circle class="hotspot-center" r="6"></circle>
-                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
-                </rect>
-                <g class="tooltip">
-                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
-                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Kashmir</text>
-                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Paradise on Earth</text>
-                </g>
-              </g>
-
-              <g class="hotspot" data-target="ladakh" transform="translate(300, 120)">
-                <circle class="hotspot-pulse" r="16"></circle>
-                <circle class="hotspot-center" r="6"></circle>
-                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
-                </rect>
-                <g class="tooltip">
-                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
-                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Ladakh</text>
-                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">High-Altitude Majesty</text>
-                </g>
-              </g>
-
-              <g class="hotspot" data-target="manali" transform="translate(260, 200)">
-                <circle class="hotspot-pulse" r="16"></circle>
-                <circle class="hotspot-center" r="6"></circle>
-                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
-                </rect>
-                <g class="tooltip">
-                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
-                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Manali</text>
-                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Adventure Escape</text>
-                </g>
-              </g>
-
-              <g class="hotspot" data-target="shimla" transform="translate(270, 230)">
-                <circle class="hotspot-pulse" r="16"></circle>
-                <circle class="hotspot-center" r="6"></circle>
-                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
-                </rect>
-                <g class="tooltip">
-                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
-                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Shimla</text>
-                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Hill Luxury</text>
-                </g>
-              </g>
-
-              <g class="hotspot" data-target="rajasthan" transform="translate(160, 360)">
-                <circle class="hotspot-pulse" r="16"></circle>
-                <circle class="hotspot-center" r="6"></circle>
-                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
-                </rect>
-                <g class="tooltip">
-                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
-                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Rajasthan</text>
-                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Royal Experience</text>
-                </g>
-              </g>
-
-              <g class="hotspot" data-target="odisha" transform="translate(460, 480)">
-                <circle class="hotspot-pulse" r="16"></circle>
-                <circle class="hotspot-center" r="6"></circle>
-                <rect class="hotspot-hit" x="-24" y="-24" width="48" height="48" fill="transparent" cursor="pointer">
-                </rect>
-                <g class="tooltip">
-                  <rect class="tooltip-bg" x="-60" y="-55" width="120" height="40" rx="8"></rect>
-                  <text class="tooltip-title" x="0" y="-35" text-anchor="middle">Odisha</text>
-                  <text class="tooltip-sub" x="0" y="-20" text-anchor="middle">Cultural Heritage</text>
-                </g>
-              </g>
-
+              <g id="routes"></g>
+              <g id="hotspots" style="pointer-events: auto;"></g>
             </svg>
-            <div class="note" style="text-align: center; margin-top: 14px; color: var(--text-soft); font-size: 14px;">
-              Click any destination to begin your journey</div>
           </div>
+          <p style="text-align: center; margin-top: 16px; color: var(--text-soft); font-size: 13px;">SN Holiday Planner's Travel Network • Click a city to explore</p>
         </div>
-        <div class="route-points">
-          div><span></span> Delhi </div>
-        <div><span></span> Rajasthan</div>
-        <div><span></span> Shimla</div>
-        <div><span></span> Kashmir</div>
-        <div><span></span> Manali</div>
-        <div><span></span> Odisha</div>
-        <div><span></span> Ladakh</div>
-      </div>
-      </div>
       </div>
     </section>
     <section class="destinations section" id="destinations">
@@ -406,7 +330,7 @@
               <li>Desert Safari</li>
               <li>Luxury Stay</li>
             </ul>
-            <span>Starting From ₹XX,XXX</span>
+            <span>Starting From ₹7,999</span>
           </div>
           <div class="package-card reveal">
             <h3>KASHMIR DELIGHT</h3>
@@ -416,7 +340,7 @@
               <li>Nature Views</li>
               <li>Comfort Hotels</li>
             </ul>
-            <span>Starting From ₹XX,XXX</span>
+            <span>Starting From ₹12,999</span>
           </div>
           <div class="package-card reveal">
             <h3>LADAKH ESCAPE</h3>
@@ -426,7 +350,7 @@
               <li>Mountain Views</li>
               <li>Adventure Stay</li>
             </ul>
-            <span>Starting From ₹XX,XXX</span>
+            <span>Starting From ₹19,999</span>
           </div>
         </div>
       </div>
@@ -632,7 +556,7 @@
   </footer>
   <a class="whatsapp-float" href="https://wa.me/918527374956" target="_blank" rel="noopener noreferrer"
     aria-label="Open WhatsApp">
-    <span>WhatsApp</span>
+    <span><img src="assets/whatsapp.png" alt="WhatsApp"></span>
   </a>
   <div class="mobile-contact-bar">
     <a href="tel:+918527374956">Call Now</a>

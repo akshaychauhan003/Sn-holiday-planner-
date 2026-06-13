@@ -390,7 +390,7 @@ html[data-theme="dark"] .india-map-land {
 }
 
 .hotspot-circle {
-    fill: var(--gold-strong, #42B0E3);
+    fill: #ff9933;
     stroke: #ffffff;
     stroke-width: 3;
     filter: url(#hotspotGlow);
@@ -400,7 +400,7 @@ html[data-theme="dark"] .india-map-land {
 
 .hotspot-pulse-ring {
     fill: none;
-    stroke: var(--gold, #63CBF7);
+    stroke: #ff9933;
     stroke-width: 2;
     opacity: 0.7;
     animation: svgPulse 2s infinite ease-out;
@@ -413,17 +413,15 @@ html[data-theme="dark"] .india-map-land {
 }
 
 .hotspot-label {
-    font-size: 14px;
     font-weight: 800;
     pointer-events: none;
     font-family: var(--font-sans, "Manrope", sans-serif);
     fill: var(--navy, #1C61AD);
-    stroke: #ffffff;
-    stroke-width: 3.5px;
+    font-size: 14px;
+    stroke: var(--bg, #FFFCFA);
+    stroke-width: 4;
     stroke-linejoin: round;
     paint-order: stroke;
-    filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.45));
-    transition: fill 0.3s ease, stroke 0.3s ease;
 }
 
 html[data-theme="dark"] .hotspot-label {

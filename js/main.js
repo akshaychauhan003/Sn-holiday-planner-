@@ -156,18 +156,17 @@ window.addEventListener("DOMContentLoaded", () => {
   //
   // Debug mode: set window.MAP_DEBUG = true in console, then reload
   // ================================================================
-
   const MAP_VIEWBOX = { w: 666.67, h: 777.33 };
   const DEBUG = window.MAP_DEBUG || false;
 
   const places = [
-    { name: "Delhi",       x: 212.2, y: 224.9, id: "home", labelPos: "right" },
-    { name: "Jaipur",      x: 179.1, y: 270.2, id: "rajasthan", labelPos: "left" },
-    { name: "Shimla",      x: 210.8, y: 158.1, id: "shimla", labelPos: "right" },
-    { name: "Manali",      x: 211.3, y: 127.6, id: "manali", labelPos: "right" },
-    { name: "Srinagar",    x: 156.1, y:  78.3, id: "kashmir", labelPos: "left" },
-    { name: "Leh",         x: 220.2, y:  76.4, id: "ladakh", labelPos: "right" },
-    { name: "Bhubaneswar", x: 409.9, y: 447.6, id: "odisha", labelPos: "right" }
+    { name: "Delhi",       x: 212.2, y: 224.9, id: "home" },
+    { name: "Jaipur",      x: 179.1, y: 270.2, id: "rajasthan" },
+    { name: "Shimla",      x: 210.8, y: 158.1, id: "shimla" },
+    { name: "Manali",      x: 211.3, y: 127.6, id: "manali" },
+    { name: "Srinagar",    x: 156.1, y:  78.3, id: "kashmir" },
+    { name: "Leh",         x: 220.2, y:  76.4, id: "ladakh" },
+    { name: "Bhubaneswar", x: 409.9, y: 447.6, id: "odisha" }
   ];
 
   const routesSvg = document.getElementById("routes");
@@ -183,13 +182,10 @@ window.addEventListener("DOMContentLoaded", () => {
   function drawRoutes(source) {
     if (!routesSvg) return;
     routesSvg.innerHTML = "";
-
     places.forEach(dest => {
       if (dest === source) return;
-
       const mx = (source.x + dest.x) / 2;
       const my = Math.min(source.y, dest.y) - 30;
-
       const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute("d", `M ${source.x} ${source.y} Q ${mx} ${my} ${dest.x} ${dest.y}`);
       path.setAttribute("class", "route-path-anim");
@@ -199,7 +195,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function createHotspots() {
     if (!hotspotsSvg) return;
-
     // Debug: show viewBox info
     if (DEBUG) {
       const dbg = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -211,35 +206,24 @@ window.addEventListener("DOMContentLoaded", () => {
       dbg.setAttribute("font-family", "monospace");
       hotspotsSvg.appendChild(dbg);
     }
-
     places.forEach(place => {
       const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
       g.setAttribute("class", "hotspot-node");
       g.setAttribute("transform", `translate(${place.x}, ${place.y})`);
-
       // Pulsing outer ring
       const pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       pulse.setAttribute("r", "12");
       pulse.setAttribute("class", "hotspot-pulse-ring");
-
       // Main marker circle
       const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       circle.setAttribute("r", "7");
       circle.setAttribute("class", "hotspot-circle");
-
-      // City label with custom left/right alignment to prevent overlapping
+      // City label
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
       text.textContent = place.name;
-      if (place.labelPos === "left") {
-        text.setAttribute("x", "-14");
-        text.setAttribute("text-anchor", "end");
-      } else {
-        text.setAttribute("x", "14");
-        text.setAttribute("text-anchor", "start");
-      }
+      text.setAttribute("x", "14");
       text.setAttribute("y", "5");
       text.setAttribute("class", "hotspot-label");
-
       // Invisible 48x48 hit box for accessibility
       const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       rect.setAttribute("x", "-24");
@@ -248,12 +232,10 @@ window.addEventListener("DOMContentLoaded", () => {
       rect.setAttribute("height", "48");
       rect.setAttribute("fill", "transparent");
       rect.setAttribute("cursor", "pointer");
-
       g.appendChild(pulse);
       g.appendChild(circle);
       g.appendChild(text);
       g.appendChild(rect);
-
       // Debug: show coordinate values
       if (DEBUG) {
         const coord = document.createElementNS("http://www.w3.org/2000/svg", "text");
@@ -265,7 +247,6 @@ window.addEventListener("DOMContentLoaded", () => {
         coord.setAttribute("font-family", "monospace");
         g.appendChild(coord);
       }
-
       g.addEventListener("click", () => {
         drawRoutes(place);
         const targetEl = document.getElementById(place.id);
@@ -273,7 +254,6 @@ window.addEventListener("DOMContentLoaded", () => {
           targetEl.scrollIntoView({ behavior: "smooth" });
         }
       });
-
       hotspotsSvg.appendChild(g);
     });
   }
