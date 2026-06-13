@@ -5,6 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const reveals = document.querySelectorAll(".reveal");
   const statNumbers = document.querySelectorAll(".stat-number");
   const enquiryBtn = document.getElementById("enquiryBtn");
+  const videos = document.querySelectorAll(".destination-video");
   const quotes = [
     "Travel is the only thing you buy that makes you richer.",
     "Collect moments, not things.",
@@ -30,32 +31,14 @@ window.addEventListener("DOMContentLoaded", () => {
   navAnchors.forEach(link => {
     link.addEventListener("click", () => navPanel.classList.remove("open"));
   });
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.16 });
-  reveals.forEach(el => revealObserver.observe(el));
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = +el.dataset.target;
-      let count = 0;
-      const step = Math.max(1, Math.ceil(target / 60));
-      const timer = setInterval(() => {
-        count += step;
-        if (count >= target) {
-          el.textContent = target;
-          clearInterval(timer);
-        } else {
-          el.textContent = count;
-        }
-      }, 25);
-      counterObserver.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  statNumbers.forEach(num => counterObserver.observe(num));
+
+  // Force all reveals to be visible immediately (no IntersectionObserver)
+  reveals.forEach(el => el.classList.add("visible"));
+
+  // Force all counters to show final value immediately
+  statNumbers.forEach(num => {
+    num.textContent = num.dataset.target || num.textContent;
+  });
   const galleryItems = document.querySelectorAll(".gallery-item");
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.getElementById("lightboxImage");
@@ -65,12 +48,22 @@ window.addEventListener("DOMContentLoaded", () => {
       lightboxImage.src = item.dataset.full;
       lightbox.classList.add("active");
       lightbox.setAttribute("aria-hidden", "false");
+      // Pause background videos when modal is active
+      videos.forEach(v => { if (v.src) v.pause(); });
     });
   });
   function closeLightbox() {
     lightbox.classList.remove("active");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImage.src = "";
+    // Resume visible videos when modal closes
+    videos.forEach(v => {
+      const rect = v.getBoundingClientRect();
+      const isVisible = (rect.top < window.innerHeight && rect.bottom > 0);
+      if (isVisible && v.src) {
+        v.play().catch(e => {});
+      }
+    });
   }
   lightboxClose.addEventListener("click", closeLightbox);
   lightbox.addEventListener("click", (e) => {
@@ -149,13 +142,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // ================================================================
   // Interactive India Map — SVG ViewBox Coordinate System
   // ================================================================
-  // The Wikipedia India outline SVG has viewBox: 0 0 666.67 777.33
-  // Coordinates are computed from real geographic lat/lon:
-  //   x = (lon - 68) / (97 - 68) * 666.67
-  //   y = (37 - lat) / (37 - 8) * 777.33
-  //
-  // Debug mode: set window.MAP_DEBUG = true in console, then reload
-  // ================================================================
   const MAP_VIEWBOX = { w: 666.67, h: 777.33 };
   const DEBUG = window.MAP_DEBUG || false;
 
@@ -172,7 +158,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const routesSvg = document.getElementById("routes");
   const hotspotsSvg = document.getElementById("hotspots");
 
-  // Validate all hotspots are within the SVG viewBox
   places.forEach(p => {
     if (p.x < 0 || p.x > MAP_VIEWBOX.w || p.y < 0 || p.y > MAP_VIEWBOX.h) {
       console.warn(`⚠ Hotspot "${p.name}" is OUTSIDE viewBox: (${p.x}, ${p.y})`);
@@ -195,7 +180,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function createHotspots() {
     if (!hotspotsSvg) return;
-    // Debug: show viewBox info
     if (DEBUG) {
       const dbg = document.createElementNS("http://www.w3.org/2000/svg", "text");
       dbg.textContent = `viewBox: 0 0 ${MAP_VIEWBOX.w} ${MAP_VIEWBOX.h}`;
@@ -210,21 +194,17 @@ window.addEventListener("DOMContentLoaded", () => {
       const g = document.createElementNS("http://www.w3.org/2000/svg", "g");
       g.setAttribute("class", "hotspot-node");
       g.setAttribute("transform", `translate(${place.x}, ${place.y})`);
-      // Pulsing outer ring
       const pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       pulse.setAttribute("r", "12");
       pulse.setAttribute("class", "hotspot-pulse-ring");
-      // Main marker circle
       const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       circle.setAttribute("r", "7");
       circle.setAttribute("class", "hotspot-circle");
-      // City label
       const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
       text.textContent = place.name;
       text.setAttribute("x", "14");
       text.setAttribute("y", "5");
       text.setAttribute("class", "hotspot-label");
-      // Invisible 48x48 hit box for accessibility
       const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       rect.setAttribute("x", "-24");
       rect.setAttribute("y", "-24");
@@ -236,7 +216,6 @@ window.addEventListener("DOMContentLoaded", () => {
       g.appendChild(circle);
       g.appendChild(text);
       g.appendChild(rect);
-      // Debug: show coordinate values
       if (DEBUG) {
         const coord = document.createElementNS("http://www.w3.org/2000/svg", "text");
         coord.textContent = `(${place.x}, ${place.y})`;
@@ -259,6 +238,153 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   createHotspots();
-  drawRoutes(places[0]); // Default: routes from Delhi
+  drawRoutes(places[0]);
+
+  // Cinematic Videos Immediate Loader & Controls
+  // ================================================================
+  videos.forEach(video => {
+    if (video.dataset.src) {
+      video.src = video.dataset.src;
+      video.removeAttribute("data-src");
+      video.load();
+    }
+    
+    video.play().then(() => {
+      video.classList.add("playing");
+    }).catch(() => {});
+
+    video.addEventListener("playing", () => {
+      video.classList.add("playing");
+    });
+
+    video.addEventListener("error", () => {
+      console.warn(`Video fallback triggered for source: ${video.src || video.dataset.src}`);
+      video.style.display = "none";
+      const poster = video.parentElement.querySelector(".destination-poster");
+      if (poster) {
+        poster.style.opacity = "1";
+      }
+    });
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      videos.forEach(v => { if (v.src) v.pause(); });
+    } else {
+      videos.forEach(v => {
+        if (v.src) v.play().catch(() => {});
+      });
+    }
+  });
+
+  // ================================================================
+  // Dynamic Image Auto-Mapper (assets/images/ and assets/ fallbacks)
+  // ================================================================
+  const mapImages = () => {
+    const journeyCards = document.querySelectorAll(".journey-card");
+    const journeyMapping = {
+      "tour inquiry": "tourInquiry",
+      "planning": "planning",
+      "booking": "booking",
+      "travel": "Travel",
+      "explore": "explore",
+      "memories": "memories"
+    };
+
+    journeyCards.forEach(card => {
+      const titleEl = card.querySelector("h3");
+      if (!titleEl) return;
+      const titleText = titleEl.textContent.trim().toLowerCase();
+      const baseFilename = journeyMapping[titleText];
+      if (!baseFilename) return;
+
+      const img = card.querySelector("img");
+      if (!img) return;
+
+      const extensions = ["jpg", "png", "jpeg", "webp"];
+      const directories = ["assets/images/", "assets/"];
+      let attempts = [];
+      
+      directories.forEach(dir => {
+        extensions.forEach(ext => {
+          attempts.push(`${dir}${baseFilename}.${ext}`);
+        });
+      });
+
+      let index = 0;
+      const tryLoad = () => {
+        if (index >= attempts.length) {
+          img.src = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80";
+          return;
+        }
+        const testUrl = attempts[index];
+        const tempImg = new Image();
+        tempImg.onload = () => {
+          img.src = testUrl;
+        };
+        tempImg.onerror = () => {
+          index++;
+          tryLoad();
+        };
+        tempImg.src = testUrl;
+      };
+      
+      tryLoad();
+    });
+
+    const galleryItems = document.querySelectorAll(".gallery-item");
+    const galleryMapping = {
+      "luxury escapes": "LuxuryEscapes",
+      "mountain moods": "MountainMoods",
+      "golden journeys": "GoldenJourneys",
+      "cultural routes": "CulturalRoutes",
+      "signature moments": "SignatureMoments",
+      "scenic luxury": "ScenicLuxury"
+    };
+
+    galleryItems.forEach(item => {
+      const titleEl = item.querySelector("h3");
+      if (!titleEl) return;
+      const titleText = titleEl.textContent.trim().toLowerCase();
+      const baseFilename = galleryMapping[titleText];
+      if (!baseFilename) return;
+
+      const img = item.querySelector("img");
+      if (!img) return;
+
+      const extensions = ["jpg", "png", "jpeg", "webp"];
+      const directories = ["assets/images/", "assets/"];
+      let attempts = [];
+      
+      directories.forEach(dir => {
+        extensions.forEach(ext => {
+          attempts.push(`${dir}${baseFilename}.${ext}`);
+        });
+      });
+
+      let index = 0;
+      const tryLoad = () => {
+        if (index >= attempts.length) {
+          img.src = "https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=800&q=80";
+          return;
+        }
+        const testUrl = attempts[index];
+        const tempImg = new Image();
+        tempImg.onload = () => {
+          img.src = testUrl;
+          item.setAttribute("data-full", testUrl);
+        };
+        tempImg.onerror = () => {
+          index++;
+          tryLoad();
+        };
+        tempImg.src = testUrl;
+      };
+      
+      tryLoad();
+    });
+  };
+
+  mapImages();
 
 });

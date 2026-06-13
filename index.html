@@ -29,14 +29,12 @@
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <!-- <div class="scroll-progress" id="scrollProgress"></div> -->
   <div id="intro-screen">
-    <video id="intro-video" autoplay playsinline preload="auto">
-      <source src="assets/videos/intro.mp4" type="video/mp4" />
-    </video>
+    <video id="intro-video" muted playsinline preload="metadata"></video>
     <button id="skip-intro-btn">Skip Intro</button>
   </div>
-  <div class="preloader" id="preloader" aria-hidden="true">
+  <div class="preloader" id="loading-screen" aria-hidden="true">
     <div class="preloader-inner">
       <span class="preloader-line"></span>
     </div>
@@ -179,7 +177,32 @@
         <p class="eyebrow">Destination Journey</p>
         <h2>Six premium escapes, each with its own mood and story.</h2>
       </div>
+      <article class="destination-panel destination-delhi reveal" id="delhi">
+        <div class="destination-video-container">
+          <img src="assets/planning.jpeg" class="destination-poster" alt="Delhi Poster" loading="lazy">
+          <video data-src="assets/videos/Delhi.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
+        <div class="container destination-inner">
+          <div class="destination-copy">
+            <p class="eyebrow">Historic Capital</p>
+            <h3>Delhi</h3>
+            <p>Mughal monuments, vibrant bazaars, spiritual sites, and a dynamic blend of ancient heritage with modern luxury.</p>
+            <div class="mini-info">
+              <div><strong>Best Time</strong><span>Oct - Mar</span></div>
+              <div><strong>Ideal For</strong><span>Family | Couple | History | Food Lovers</span></div>
+              <div><strong>Stay</strong><span>4 Nights / 5 Days</span></div>
+            </div>
+            <a href="#contact" class="btn btn-gold">Explore Package</a>
+          </div>
+        </div>
+      </article>
       <article class="destination-panel destination-rajasthan reveal" id="rajasthan">
+        <div class="destination-video-container">
+          <img src="assets/LuxuryEscapes.jpeg" class="destination-poster" alt="Rajasthan Poster" loading="lazy">
+          <video data-src="assets/videos/Rajasthan.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
         <div class="container destination-inner">
           <div class="destination-copy">
             <p class="eyebrow">Royal Experience</p>
@@ -196,6 +219,11 @@
         </div>
       </article>
       <article class="destination-panel destination-shimla reveal" id="shimla">
+        <div class="destination-video-container">
+          <img src="assets/MountainMoods.jpeg" class="destination-poster" alt="Shimla Poster" loading="lazy">
+          <video data-src="assets/videos/shimla.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
         <div class="container destination-inner">
           <div class="destination-copy">
             <p class="eyebrow">Hill Luxury</p>
@@ -211,6 +239,11 @@
         </div>
       </article>
       <article class="destination-panel destination-kashmir reveal" id="kashmir">
+        <div class="destination-video-container">
+          <img src="assets/ScenicLuxury.jpeg" class="destination-poster" alt="Kashmir Poster" loading="lazy">
+          <video data-src="assets/videos/kashmir.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
         <div class="container destination-inner">
           <div class="destination-copy">
             <p class="eyebrow">Heavenly Scenery</p>
@@ -227,6 +260,11 @@
         </div>
       </article>
       <article class="destination-panel destination-manali reveal" id="manali">
+        <div class="destination-video-container">
+          <img src="assets/explore.jpeg" class="destination-poster" alt="Manali Poster" loading="lazy">
+          <video data-src="assets/videos/manali.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
         <div class="container destination-inner">
           <div class="destination-copy">
             <p class="eyebrow">Adventure Escape</p>
@@ -243,6 +281,11 @@
         </div>
       </article>
       <article class="destination-panel destination-odisha reveal" id="odisha">
+        <div class="destination-video-container">
+          <img src="assets/CulturalRoutes.jpeg" class="destination-poster" alt="Odisha Poster" loading="lazy">
+          <video data-src="assets/videos/odissa.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
         <div class="container destination-inner">
           <div class="destination-copy">
             <p class="eyebrow">Cultural Luxury</p>
@@ -259,6 +302,11 @@
         </div>
       </article>
       <article class="destination-panel destination-ladakh reveal" id="ladakh">
+        <div class="destination-video-container">
+          <img src="assets/GoldenJourneys.jpeg" class="destination-poster" alt="Ladakh Poster" loading="lazy">
+          <video data-src="assets/videos/ladakh.mp4" muted loop playsinline preload="metadata" class="destination-video"></video>
+          <div class="destination-video-overlay"></div>
+        </div>
         <div class="container destination-inner">
           <div class="destination-copy">
             <p class="eyebrow">High-Altitude Majesty</p>
@@ -355,7 +403,7 @@
         </div>
       </div>
     </section>
-    <section class="journey section">
+    <section class="timeline section">
       <div class="container">
         <div class="section-head reveal">
           <p class="eyebrow">Travel Journey Timeline</p>
@@ -366,54 +414,60 @@
             <div class="journey-img-wrap">
               <img src="assets/tourInquiry.jpeg" alt="Tour Inquiry" loading="lazy">
             </div>
+            <span class="journey-badge">1</span>
             <div class="journey-content">
-              <span class="journey-badge">1</span>
               <h3>Tour Inquiry</h3>
+              <p>Connect with our destination specialists to share your travel dreams, interests, and preferred style of journey.</p>
             </div>
           </div>
           <div class="journey-card">
             <div class="journey-img-wrap">
               <img src="assets/planning.jpeg" alt="Planning" loading="lazy">
             </div>
+            <span class="journey-badge">2</span>
             <div class="journey-content">
-              <span class="journey-badge">2</span>
               <h3>Planning</h3>
+              <p>Receive a custom-curated itinerary built around your pace, featuring handpicked luxury stays and experiences.</p>
             </div>
           </div>
           <div class="journey-card">
             <div class="journey-img-wrap">
               <img src="assets/booking.jpeg" alt="Booking" loading="lazy">
             </div>
+            <span class="journey-badge">3</span>
             <div class="journey-content">
-              <span class="journey-badge">3</span>
               <h3>Booking</h3>
+              <p>Secure your reservations with transparent billing, priority service, and seamless flight/stay confirmations.</p>
             </div>
           </div>
           <div class="journey-card">
             <div class="journey-img-wrap">
               <img src="assets/Travel.jpeg" alt="Travel" loading="lazy">
             </div>
+            <span class="journey-badge">4</span>
             <div class="journey-content">
-              <span class="journey-badge">4</span>
               <h3>Travel</h3>
+              <p>Set off with our private transfers, expert local guides, and 24/7 dedicated travel assistance at every step.</p>
             </div>
           </div>
           <div class="journey-card">
             <div class="journey-img-wrap">
               <img src="assets/explore.jpeg" alt="Explore" loading="lazy">
             </div>
+            <span class="journey-badge">5</span>
             <div class="journey-content">
-              <span class="journey-badge">5</span>
               <h3>Explore</h3>
+              <p>Immerse yourself in authentic cultural moments, stunning landscapes, and curated local culinary tours.</p>
             </div>
           </div>
           <div class="journey-card">
             <div class="journey-img-wrap">
               <img src="assets/memories.jpeg" alt="Memories" loading="lazy">
             </div>
+            <span class="journey-badge">6</span>
             <div class="journey-content">
-              <span class="journey-badge">6</span>
               <h3>Memories</h3>
+              <p>Return home enriched with stories, exquisite pictures, and lifelong impressions of your bespoke journey.</p>
             </div>
           </div>
         </div>
@@ -431,32 +485,32 @@
           <h2>A premium visual moodboard of journeys and memories.</h2>
         </div>
         <div class="gallery-grid">
-          <button class="gallery-item reveal" data-full="assets/LuxuryEscapes.jpeg" aria-label="View Luxury Escapes">
+          <button class="gallery-item reveal" data-full="assets/LuxuryEscapes.jpeg" aria-label="Open Luxury Escapes">
             <img src="assets/LuxuryEscapes.jpeg" alt="Luxury Escapes" loading="lazy">
             <div class="gallery-overlay"></div>
             <h3>Luxury Escapes</h3>
           </button>
-          <button class="gallery-item reveal" data-full="assets/MountainMoods.jpeg" aria-label="View Mountain Moods">
+          <button class="gallery-item reveal" data-full="assets/MountainMoods.jpeg" aria-label="Open Mountain Moods">
             <img src="assets/MountainMoods.jpeg" alt="Mountain Moods" loading="lazy">
             <div class="gallery-overlay"></div>
             <h3>Mountain Moods</h3>
           </button>
-          <button class="gallery-item reveal" data-full="assets/GoldenJourneys.jpeg" aria-label="View Golden Journeys">
+          <button class="gallery-item reveal" data-full="assets/GoldenJourneys.jpeg" aria-label="Open Golden Journeys">
             <img src="assets/GoldenJourneys.jpeg" alt="Golden Journeys" loading="lazy">
             <div class="gallery-overlay"></div>
             <h3>Golden Journeys</h3>
           </button>
-          <button class="gallery-item reveal" data-full="assets/CulturalRoutes.jpeg" aria-label="View Cultural Routes">
+          <button class="gallery-item reveal" data-full="assets/CulturalRoutes.jpeg" aria-label="Open Cultural Routes">
             <img src="assets/CulturalRoutes.jpeg" alt="Cultural Routes" loading="lazy">
             <div class="gallery-overlay"></div>
             <h3>Cultural Routes</h3>
           </button>
-          <button class="gallery-item reveal" data-full="assets/SignatureMoments.jpeg" aria-label="View Signature Moments">
+          <button class="gallery-item reveal" data-full="assets/SignatureMoments.jpeg" aria-label="Open Signature Moments">
             <img src="assets/SignatureMoments.jpeg" alt="Signature Moments" loading="lazy">
             <div class="gallery-overlay"></div>
             <h3>Signature Moments</h3>
           </button>
-          <button class="gallery-item reveal" data-full="assets/ScenicLuxury.jpeg" aria-label="View Scenic Luxury">
+          <button class="gallery-item reveal" data-full="assets/ScenicLuxury.jpeg" aria-label="Open Scenic Luxury">
             <img src="assets/ScenicLuxury.jpeg" alt="Scenic Luxury" loading="lazy">
             <div class="gallery-overlay"></div>
             <h3>Scenic Luxury</h3>
