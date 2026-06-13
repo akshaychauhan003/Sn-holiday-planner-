@@ -1,11 +1,5 @@
-@media (max-width: 1200px) {
-  .destination-tracker,
-  .nav-dots {
-    display: none;
-  }
-}
-
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
+  /* Common grid collapsing for Tablet and Mobile */
   .split-grid,
   .contact-grid,
   .map-board,
@@ -13,6 +7,19 @@
   .feature-grid,
   .package-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .destination-tracker,
+  .nav-dots {
+    display: none;
+  }
+}
+
+/* Tablet Layout (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar {
+    min-height: 80px;
+    padding: 0 24px;
   }
 
   .nav-panel {
@@ -23,12 +30,13 @@
     flex-direction: column;
     align-items: stretch;
     gap: 18px;
-    padding: 20px;
+    padding: 24px;
     border-radius: 24px;
     background: var(--surface-solid);
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
     display: none;
+    z-index: 2100;
   }
   .nav-panel.open { display: flex; }
   .nav-links { flex-direction: column; gap: 16px; }
@@ -36,6 +44,7 @@
   .menu-toggle {
     display: grid;
     gap: 5px;
+    cursor: pointer;
   }
   .menu-toggle span {
     width: 26px;
@@ -44,7 +53,8 @@
   }
 }
 
-@media (max-width: 768px) {
+/* Mobile Layout (320px to 767px) */
+@media (max-width: 767px) {
   .section { padding: 74px 0; }
   .hero { min-height: 92vh; }
   .hero-actions { flex-direction: column; align-items: stretch; }
@@ -53,6 +63,110 @@
   .mobile-contact-bar { display: grid; }
   .whatsapp-float { bottom: 78px; }
   .back-to-top { bottom: 148px; }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 14px 0;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: rgba(7, 17, 31, 0.85);
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-height: auto;
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  /* Centered logo at the top and company name directly below */
+  .brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .brand img {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+  }
+
+  .brand span {
+    display: inline-block !important; /* Force visible */
+    font-family: "Cinzel", serif;
+    font-weight: 700;
+    font-size: clamp(0.95rem, 4.5vw, 1.25rem);
+    letter-spacing: 0.05em;
+    color: var(--text);
+  }
+
+  .brand-tagline {
+    display: none !important;
+  }
+
+  /* Hide mobile hamburger toggle since navbar is inline below logo */
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* Nav panel displayed static below branding */
+  .nav-panel {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    position: static;
+    background: none;
+    box-shadow: none;
+    border: none;
+    padding: 0;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    width: 100%;
+    padding: 4px 0;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    padding: 8px 6px;
+    min-height: 44px; /* Accessible Touch Target */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .nav-actions .btn {
+    padding: 8px 20px;
+    font-size: 12px;
+    min-height: 44px; /* Accessible Touch Target */
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: 560px) {
@@ -61,6 +175,5 @@
     text-align: center;
     gap: 6px;
   }
-  .brand span { display: none; }
   .route-map { min-height: 260px; }
 }
